@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -18,4 +19,8 @@ public interface EventCategoryRepository extends JpaRepository<EventCategory, Lo
 
     @Query("SELECT COUNT(r) FROM Result r WHERE r.category.id = :categoryId")
     int getResultCount(@Param("categoryId") Long categoryId);
+
+    boolean existsByEventIdAndCategoryName(Long eventId, String raceCategory);
+
+    Optional<EventCategory> findByEventIdAndCategoryName(Long eventId, String raceCategory);
 }
