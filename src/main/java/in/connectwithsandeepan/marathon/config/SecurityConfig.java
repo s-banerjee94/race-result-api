@@ -35,12 +35,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                     auth.requestMatchers("/api/v1/users").permitAll()
-                            .requestMatchers("/api/v1/**").permitAll()
                             .requestMatchers("/api/v1/auth/login").permitAll()
-                            .requestMatchers("/api/v1/events/**").permitAll()
-                            .requestMatchers("/api/v1/**").permitAll()
-                            .requestMatchers("/api/v1/events").permitAll()
-                            .requestMatchers("/image").permitAll()
                             .requestMatchers("swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                             .anyRequest().hasAnyRole("USER", "ADMIN")
                 )

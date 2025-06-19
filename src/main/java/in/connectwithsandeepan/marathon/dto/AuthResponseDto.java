@@ -1,6 +1,7 @@
 package in.connectwithsandeepan.marathon.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.Instant;
 import java.util.List;
 
-@Schema(description = "Authentication response data transfer object")
+@Tag(name = "AuthResponseDto", description = "Authentication response data transfer object")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
