@@ -169,11 +169,13 @@ public class ResultController {
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteResult(
+            @Parameter(description = "Event ID", required = true, example = "1")
+            @PathVariable Long eventId,
             @Parameter(description = "Result ID", required = true, example = "1")
             @PathVariable Long id) {
 
         log.info("Request to delete result with id: {}", id);
-        resultService.deleteResult(id);
+        resultService.deleteResult(eventId, id);
         log.info("Result deleted with id: {}", id);
         return ResponseEntity.noContent().build();
     }

@@ -46,5 +46,5 @@ public interface ResultService {
      *
      * @param id the ID of the result to be deleted
      */
-    void deleteResult(Long id);
+    void deleteResult(Long eventId, Long id);
 }

@@ -21,6 +21,7 @@ import java.util.List;
 @Slf4j
 public class ResultServiceImpl implements ResultService {
 
+    public static final String EVENT_NOT_FOUND_WITH_ID = "Event not found with id: {}";
     private final ResultRepository resultRepository;
     private final EventRepository eventRepository;
 
@@ -28,7 +29,7 @@ public class ResultServiceImpl implements ResultService {
     public Result saveResult(Long eventId, ResultRequestDTO dto) {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> {
-                    log.warn("Event not found with id: {}", eventId);
+                    log.warn(EVENT_NOT_FOUND_WITH_ID, eventId);
                     return new EntityNotFoundException("Event not found with id: " + eventId);
                 });
         EventCategory category = event.getEventCategories().stream()
@@ -84,9 +85,8 @@ public class ResultServiceImpl implements ResultService {
     public List<Result> getAllResultsByEventId(Long eventId) {
         log.debug("Fetching all results for event id: {}", eventId);
 
-        // Validate event exists
         if (!eventRepository.existsById(eventId)) {
-            log.warn("Event not found with id: {}", eventId);
+            log.warn(EVENT_NOT_FOUND_WITH_ID, eventId);
             throw new EntityNotFoundException("Event not found with id: " + eventId);
         }
 
@@ -101,9 +101,13 @@ public class ResultServiceImpl implements ResultService {
     }
 
     @Override
-    public void deleteResult(Long id) {
+    public void deleteResult(Long eventId, Long id) {
         log.debug("Deleting result with id: {}", id);
 
+        eventRepository.findById(eventId).orElseThrow(() -> {
+            log.warn(EVENT_NOT_FOUND_WITH_ID, eventId);
+            return new EntityNotFoundException("Event not found with id: " + eventId);
+        });
         Result result = getResultById(id);
         resultRepository.delete(result);
 
