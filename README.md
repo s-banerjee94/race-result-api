@@ -7,7 +7,6 @@ A Spring Boot-based REST API for managing marathon race results with JWT authent
 * **Secure Authentication** - JWT-based authentication and authorization
 * **Excel Integration** - Upload and process race results via Excel files
 * **Batch Processing** - Efficient handling of large datasets
-* **Comprehensive API** - RESTful endpoints for complete race result management
 * **Data Validation** - Robust input validation for all API requests
 * **Documentation** - Swagger/OpenAPI integration
 * **MySQL Database** - Persistent storage with JPA integration
@@ -67,8 +66,19 @@ http://localhost:8080/swagger-ui/index.html
 
 The API manages marathon race results with the following key entities:
 
+
+## Database Schema
+
+![Database Schema](./dbschema.jpg)
+
+### Authentication
+- User registration and login
+- JWT token generation and validation
+- Role-based access control
+
+
 ### Race Result
-Contains participant information and race performance data:
+Contains participant information and race performance data. Every result belongs to an event, and event management is also supported:
 - Bib number (unique identifier)
 - Participant name
 - Gender
@@ -80,23 +90,20 @@ Contains participant information and race performance data:
 - Chip time
 - Gun time
 - Checkpoint times
+- **Event** (each result is linked to an event)
 
-## Key Functionalities
+### Event Management
+- Create, read, update, and delete events
+- Link race results to specific events
 
-### Authentication
-- User registration and login
-- JWT token generation and validation
-- Role-based access control
 
 ### Race Result Management
 - Create, read, update, and delete race results
 - Bulk upload results via Excel
-- Search and filter results by various criteria
 
 ### Batch Processing
 - Asynchronous processing of large datasets
 - Job monitoring and error handling
-- Performance optimization for large race events
 
 
 
@@ -128,6 +135,10 @@ spring.servlet.multipart.max-request-size=10MB
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+**We welcome contributions! If you are interested in enhancing this project or adding new features, please feel free to open an issue or submit a pull request. Your ideas and improvements are highly appreciated.**
+
+**If you would like to actively contribute, collaborate, or discuss new features, you can also contact me via email or on [LinkedIn](https://www.linkedin.com/in/connect2sandy/).**
 
 ## License
 
