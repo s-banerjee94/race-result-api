@@ -130,6 +130,8 @@ spring.servlet.multipart.max-request-size=10MB
 
 ## Contributing
 
+To contribute, please take a branch from the `develop` branch before making your changes. After implementing your feature or fix, submit a pull request targeting the `develop` branch. Your ideas and improvements are highly appreciated!
+
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
