@@ -33,3 +33,6 @@ build/
 .vscode/
 #LOG
 /log
+
+/uploads
+*.log
