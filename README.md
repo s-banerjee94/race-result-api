@@ -33,7 +33,7 @@ A Spring Boot-based REST API for managing marathon race results with JWT authent
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/s-banerjee94/race-result-api.git
+   git clone https://github.com/yourusername/race-result-api.git
    ```
 
 2. Navigate to the project directory:
@@ -44,6 +44,7 @@ A Spring Boot-based REST API for managing marathon race results with JWT authent
 3. Configure the database:
     - Create a MySQL database
     - Update `application.properties` with your database credentials
+
 
 4. Build the project:
    ```bash
@@ -97,13 +98,17 @@ Contains participant information and race performance data. Every result belongs
 - Link race results to specific events
 
 
+
+
 ### Race Result Management
 - Create, read, update, and delete race results
 - Bulk upload results via Excel
 
+
 ### Batch Processing
 - Asynchronous processing of large datasets
 - Job monitoring and error handling
+
 
 
 
@@ -155,3 +160,4 @@ Developed by Sandeepan Banerjee
 For questions or support, please reach out via:
 - Email: contactsandeepan@gmail.com
 - Website: https://connectwithsandeepan.in
+
