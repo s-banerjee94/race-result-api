@@ -9,6 +9,7 @@ import in.connectwithsandeepan.marathon.entity.Checkpoint;
 import in.connectwithsandeepan.marathon.entity.Event;
 import in.connectwithsandeepan.marathon.entity.EventCategory;
 import in.connectwithsandeepan.marathon.entity.Result;
+import in.connectwithsandeepan.marathon.exception.ProcessorInitializationException;
 import in.connectwithsandeepan.marathon.exception.ResultValidationException;
 import in.connectwithsandeepan.marathon.repo.ResultRepository;
 import jakarta.validation.ConstraintViolation;
@@ -80,7 +81,7 @@ public class ResultItemProcessor implements ItemProcessor<ResultRequestDTO, Resu
 
             } catch (JsonProcessingException e) {
                 log.error("Failed to convert JSON to objects for event {}: {}", eventId, e.getMessage(), e);
-                throw new RuntimeException("Failed to initialize processor for event " + eventId, e);
+                throw new ProcessorInitializationException("Failed to initialize processor for event " + eventId, e);
             }
         }
     }
