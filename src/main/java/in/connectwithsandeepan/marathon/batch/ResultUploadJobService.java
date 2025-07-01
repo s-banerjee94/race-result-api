@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import in.connectwithsandeepan.marathon.entity.Event;
 import in.connectwithsandeepan.marathon.entity.EventCategory;
+import in.connectwithsandeepan.marathon.exception.BatchStartException;
 import in.connectwithsandeepan.marathon.repo.EventCategoryRepository;
 import in.connectwithsandeepan.marathon.repo.EventRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -54,9 +55,9 @@ public class ResultUploadJobService {
 
         } catch (JobExecutionException e) {
             log.error("Failed to start result upload job: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to start batch job", e);
+            throw new BatchStartException("Failed to start batch job");
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new BatchStartException("Batch start failed: " + e.getMessage());
         }
     }
 }
