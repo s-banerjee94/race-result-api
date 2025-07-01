@@ -81,7 +81,7 @@ public class ResultItemProcessor implements ItemProcessor<ResultRequestDTO, Resu
 
             } catch (JsonProcessingException e) {
                 log.error("Failed to convert JSON to objects for event {}: {}", eventId, e.getMessage(), e);
-                throw new ProcessorInitializationException("Failed to initialize processor for event " + eventId, e);
+                throw new ProcessorInitializationException("Failed to initialize processor for event " + eventId);
             }
         }
     }

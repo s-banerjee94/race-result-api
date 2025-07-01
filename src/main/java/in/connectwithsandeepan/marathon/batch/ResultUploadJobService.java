@@ -55,9 +55,9 @@ public class ResultUploadJobService {
 
         } catch (JobExecutionException e) {
             log.error("Failed to start result upload job: {}", e.getMessage(), e);
-            throw new BatchStartException("Failed to start batch job", e);
+            throw new BatchStartException("Failed to start batch job");
         } catch (JsonProcessingException e) {
-            throw new BatchStartException(e);
+            throw new BatchStartException("Batch start failed: " + e.getMessage());
         }
     }
 }
