@@ -2,6 +2,7 @@ package in.connectwithsandeepan.marathon.batch;
 
 import in.connectwithsandeepan.marathon.dto.ResultRequestDTO;
 import in.connectwithsandeepan.marathon.entity.Result;
+import in.connectwithsandeepan.marathon.exception.ProcessorInitializationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
@@ -34,7 +35,7 @@ public class BatchStepConfiguration {
                 .writer(writer)
                 .faultTolerant()                    // Enable fault tolerance
                 .skipLimit(100)                     // Skip up to 100 bad records
-                .skip(RuntimeException.class)       // Skip on validation/processing errors
+                .skip(ProcessorInitializationException.class)       // Skip on validation/processing errors
                 .skip(DataIntegrityViolationException.class) // Skip on duplicate key errors
                 .retryLimit(3)                      // Retry failed operations 3 times
                 .retry(TransientDataAccessException.class)   // Retry on transient DB errors

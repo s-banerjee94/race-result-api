@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import in.connectwithsandeepan.marathon.entity.Event;
 import in.connectwithsandeepan.marathon.entity.EventCategory;
 import in.connectwithsandeepan.marathon.exception.BatchStartException;
-import in.connectwithsandeepan.marathon.repo.EventCategoryRepository;
 import in.connectwithsandeepan.marathon.repo.EventRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +14,6 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +21,7 @@ import java.util.Optional;
 public class ResultUploadJobService {
 
     private final JobLauncher jobLauncher;
-    private final Job resultUploadJob;
+    private final Job job;
     private final EventRepository eventRepository;
     private final ObjectMapper objectMapper;
 
@@ -48,7 +46,7 @@ public class ResultUploadJobService {
 
             log.info("Launching result upload job for event {} with file {}", eventId, filePath);
 
-            JobExecution execution = jobLauncher.run(resultUploadJob, jobParameters);
+            JobExecution execution = jobLauncher.run(job, jobParameters);
 
             log.info("Job launched with execution ID: {}", execution.getId());
             return execution;
