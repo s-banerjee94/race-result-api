@@ -117,6 +117,7 @@
     </dependencies>
 
     <build>
+        <finalName>race-result-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
