@@ -22,7 +22,9 @@ phases:
 artifacts:
   files:
     - target/*.jar
-  discard-paths: yes
+    - appspec.yml
+    - scripts/**/*
+  name: race-result-api-$(date +%Y-%m-%d-%H-%M-%S)
 
 cache:
   paths:
