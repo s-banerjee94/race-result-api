@@ -28,7 +28,7 @@ export RDS_PASSWORD="#Trickblog4u"
 
 # Start the application in background
 cd $APP_DIR
-nohup java -jar $JAR_FILE > /dev/null 2>&1 &
+nohup java -jar $JAR_FILE > $LOG_DIR/application.log 2>&1 &
 
 # Save PID
 echo $! > $PID_FILE
