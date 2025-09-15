@@ -4,7 +4,7 @@
 APP_DIR="/opt/race-result-api"
 JAR_FILE="$APP_DIR/race-result-api.jar"
 PID_FILE="$APP_DIR/app.pid"
-LOG_DIR="/var/log/race-result-api"
+LOG_DIR="/opt/race-result-api/log"
 
 echo "Starting race-result-api application..."
 
@@ -17,9 +17,14 @@ fi
 # Ensure log directory exists
 mkdir -p $LOG_DIR
 
-# Set environment variables for production
-export SPRING_PROFILES_ACTIVE=prod
-export JAVA_OPTS="-Xms512m -Xmx1024m -server"
+
+
+# RDS Database Configuration
+export RDS_HOSTNAME="database-1.cnyuesoq25zo.ap-south-1.rds.amazonaws.com"
+export RDS_PORT="3306"
+export RDS_DB_NAME="race_result_api"
+export RDS_USERNAME="admin"
+export RDS_PASSWORD="#Trickblog4u"
 
 # Start the application in background
 cd $APP_DIR
