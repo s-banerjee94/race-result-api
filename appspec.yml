@@ -1,14 +1,12 @@
 version: 0.0
 os: linux
 files:
-  - source: /
-    destination: /opt/race-result-api
-    overwrite: yes
+  - source: target/test-app.jar
+    destination: /opt/race-result-api/
+  - source: scripts/
+    destination: /opt/race-result-api/scripts/
 permissions:
   - object: /opt/race-result-api
-    owner: ubuntu
-    group: ubuntu
-  - object: /opt/race-result-api/scripts
     owner: ubuntu
     group: ubuntu
     mode: 755
@@ -19,9 +17,5 @@ hooks:
       runas: ubuntu
   ApplicationStart:
     - location: scripts/start_server.sh
-      timeout: 300
-      runas: ubuntu
-  ValidateService:
-    - location: scripts/validate_service.sh
       timeout: 300
       runas: ubuntu
