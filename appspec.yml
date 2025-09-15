@@ -6,12 +6,10 @@ files:
     overwrite: yes
 permissions:
   - object: /opt/race-result-api
-    pattern: "**"
     owner: ubuntu
     group: ubuntu
-    mode: 644
+    mode: 755
   - object: /opt/race-result-api/scripts
-    pattern: "**"
     owner: ubuntu
     group: ubuntu
     mode: 755
